@@ -1,0 +1,14 @@
+﻿<UserControl
+  xmlns="https://github.com/avaloniaui"
+  xmlns:views="clr-namespace:Restofus.Views;assembly=Restofus"
+  Background="#ffffff">
+
+  <Grid RowDefinitions="auto,*">
+
+    <TextBlock Grid.Row="0" Text="{Binding I18N[Parameters]}" />
+
+    <views:KeyValueEditor Grid.Row="1" DataContext="{Binding KeyValueEditorModel}" />
+    
+  </Grid>
+    
+</UserControl>

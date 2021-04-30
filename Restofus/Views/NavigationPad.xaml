@@ -1,0 +1,42 @@
+﻿<UserControl
+  xmlns="https://github.com/avaloniaui"
+  Padding="1"
+  Background="#8e9bbc"
+  Margin="5,5,0,5">
+
+  <Grid RowDefinitions="28,*">
+
+    <Rectangle Grid.Row="0" Fill="#cfd6e5"/>
+
+    <TreeView
+      Grid.Row="1"
+      Items="{Binding RootFiles}"
+      SelectedItem="{Binding SelectedFile}"
+      BorderThickness="0"
+      Background="#ffffff">
+      
+      <TreeView.ItemTemplate>
+        <TreeDataTemplate ItemsSource="{Binding Files}">
+          <StackPanel Orientation="Horizontal">
+            <Image
+              Source="resm:Restofus.Resources.Icons.folder.png?assembly=Restofus.Resources"
+              IsVisible="{Binding IsDirectory}"
+              Width="16"
+              Height="16"/>
+            <Image
+              Source="resm:Restofus.Resources.Icons.file-code.png?assembly=Restofus.Resources"
+              IsVisible="{Binding !IsDirectory}"
+              Width="16"
+              Height="16"/>
+            <TextBlock
+              Margin="8,0,0,0"
+              Text="{Binding Name}"/>
+          </StackPanel>
+        </TreeDataTemplate>
+      </TreeView.ItemTemplate>
+      
+    </TreeView>
+
+  </Grid>
+    
+</UserControl>

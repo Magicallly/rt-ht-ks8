@@ -1,0 +1,71 @@
+﻿<UserControl
+  xmlns="https://github.com/avaloniaui"
+  xmlns:views="clr-namespace:Restofus.Views;assembly=Restofus"
+  xmlns:editor="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
+  Padding="1"
+  Background="#8e9bbc"
+  Margin="0,5,0,5">
+
+  <Grid RowDefinitions="auto,*">
+
+    <Grid Grid.Row="0" ColumnDefinitions="100,*,auto">
+
+      <DropDown
+        Items="{Binding Methods}"
+        SelectedItem="{Binding Request.Method, Mode=TwoWay}"
+        Height="36"
+        VerticalAlignment="Center">
+
+        <DropDown.ItemTemplate>
+          <DataTemplate>
+            <StackPanel>
+              <TextBlock Text="{Binding Name}" FontSize="18" />
+            </StackPanel>
+          </DataTemplate>
+        </DropDown.ItemTemplate>
+
+      </DropDown>
+
+      <TextBox
+        Grid.Column="1"
+        Text="{Binding Request.Url.Address, Mode=TwoWay}">
+
+      </TextBox>
+
+      <Button
+        Grid.Column="2"
+        Command="{Binding SendCommand}">
+
+        <TextBlock Text="{Binding I18N[Send]}" />
+
+      </Button>
+
+    </Grid>
+
+    <TabControl Grid.Row="1">
+
+      <TabItem>
+        <TabItem.Header>
+          <TextBlock Text="{Binding I18N[Body]}" />
+        </TabItem.Header>
+
+        <editor:TextEditor
+          Name="requestBodyEditor"
+          TextBlock.FontSize="14"
+          Background="#ffffff" />
+
+      </TabItem>
+
+      <TabItem>
+        <TabItem.Header>
+          <TextBlock Text="{Binding I18N[Headers]}" />
+        </TabItem.Header>
+
+        <views:HeadersEditor DataContext="{Binding Self[HeadersEditor]}" />
+      </TabItem>
+
+    </TabControl>
+
+  </Grid>
+  
+</UserControl>

@@ -1,0 +1,50 @@
+﻿<UserControl
+  xmlns="https://github.com/avaloniaui"
+  Background="#ffffff">
+
+  <Grid ColumnDefinitions="2*,auto,3*">
+
+    <ListBox
+      Grid.Column="0"
+      Items="{Binding Items}"
+      SelectionMode="AlwaysSelected"
+      BorderThickness="0">
+
+      <ListBox.ItemTemplate>
+        <DataTemplate>
+
+          <Panel>
+            <TextBox IsVisible="{Binding !IsButton}" Text="{Binding Key}" />
+            <Button IsVisible="{Binding IsButton}">
+              <TextBlock Text="{Binding I18N[Add]}" />
+            </Button>
+          </Panel>
+
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+      
+    </ListBox>
+
+    <GridSplitter Grid.Column="1" />
+
+    <ListBox
+      Grid.Column="2"
+      Items="{Binding Items}"
+      SelectionMode="AlwaysSelected"
+      BorderThickness="0">
+
+      <ListBox.ItemTemplate>
+        <DataTemplate>
+
+          <TextBox
+            IsVisible="{Binding !IsButton}"
+            Text="{Binding Value}" />
+
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+
+    </ListBox>
+    
+  </Grid>
+    
+</UserControl>
